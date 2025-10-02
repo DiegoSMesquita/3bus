@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { user, isAdmin } = useAuth();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -36,6 +40,16 @@ const Navigation = () => {
               <Phone className="mr-2 h-4 w-4" />
               Fale Conosco
             </Button>
+            {isAdmin ? (
+              <Button variant="outline" onClick={() => navigate('/admin')}>
+                Painel Admin
+              </Button>
+            ) : (
+              <Button variant="outline" onClick={() => navigate('/auth')}>
+                <LogIn className="mr-2 h-4 w-4" />
+                Login
+              </Button>
+            )}
           </div>
 
           <button
@@ -65,6 +79,16 @@ const Navigation = () => {
               <Phone className="mr-2 h-4 w-4" />
               Fale Conosco
             </Button>
+            {isAdmin ? (
+              <Button variant="outline" className="w-full" onClick={() => navigate('/admin')}>
+                Painel Admin
+              </Button>
+            ) : (
+              <Button variant="outline" className="w-full" onClick={() => navigate('/auth')}>
+                <LogIn className="mr-2 h-4 w-4" />
+                Login
+              </Button>
+            )}
           </div>
         )}
       </nav>

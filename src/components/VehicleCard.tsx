@@ -11,6 +11,7 @@ interface VehicleCardProps {
   mileage: string;
   location: string;
   featured?: boolean;
+  price?: number;
 }
 
 const VehicleCard = ({ 
@@ -20,7 +21,8 @@ const VehicleCard = ({
   year, 
   mileage, 
   location, 
-  featured = false 
+  featured = false,
+  price
 }: VehicleCardProps) => {
   return (
     <Card className="group overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 animate-scale-in">
@@ -61,6 +63,14 @@ const VehicleCard = ({
             <span className="text-muted-foreground">{location}</span>
           </div>
         </div>
+
+        {price && (
+          <div className="py-3">
+            <p className="text-2xl font-bold text-primary">
+              R$ {price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+            </p>
+          </div>
+        )}
 
         <div className="flex gap-3">
           <Button className="flex-1 bg-primary hover:bg-primary/90">

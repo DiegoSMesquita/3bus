@@ -14,16 +14,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      vehicles: {
+        Row: {
+          color: string | null
+          created_at: string | null
+          description: string
+          featured: boolean | null
+          fuel_type: string | null
+          id: string
+          images: string[] | null
+          location: string
+          manufacturer: string
+          mileage: number
+          model: string
+          price: number | null
+          seats: number | null
+          status: Database["public"]["Enums"]["vehicle_status"] | null
+          title: string
+          transmission: string | null
+          updated_at: string | null
+          vehicle_type: Database["public"]["Enums"]["vehicle_type"]
+          year: number
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string | null
+          description: string
+          featured?: boolean | null
+          fuel_type?: string | null
+          id?: string
+          images?: string[] | null
+          location: string
+          manufacturer: string
+          mileage: number
+          model: string
+          price?: number | null
+          seats?: number | null
+          status?: Database["public"]["Enums"]["vehicle_status"] | null
+          title: string
+          transmission?: string | null
+          updated_at?: string | null
+          vehicle_type: Database["public"]["Enums"]["vehicle_type"]
+          year: number
+        }
+        Update: {
+          color?: string | null
+          created_at?: string | null
+          description?: string
+          featured?: boolean | null
+          fuel_type?: string | null
+          id?: string
+          images?: string[] | null
+          location?: string
+          manufacturer?: string
+          mileage?: number
+          model?: string
+          price?: number | null
+          seats?: number | null
+          status?: Database["public"]["Enums"]["vehicle_status"] | null
+          title?: string
+          transmission?: string | null
+          updated_at?: string | null
+          vehicle_type?: Database["public"]["Enums"]["vehicle_type"]
+          year?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      vehicle_status: "disponivel" | "vendido" | "reservado"
+      vehicle_type:
+        | "onibus_urbano"
+        | "onibus_rodoviario"
+        | "caminhao"
+        | "especial"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +248,15 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      vehicle_status: ["disponivel", "vendido", "reservado"],
+      vehicle_type: [
+        "onibus_urbano",
+        "onibus_rodoviario",
+        "caminhao",
+        "especial",
+      ],
+    },
   },
 } as const
