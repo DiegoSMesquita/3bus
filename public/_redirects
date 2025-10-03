@@ -1,0 +1,2 @@
+# SPA fallback - redirect all routes in the /3bus/ path to index.html so React Router can handle them
+/3bus/*    /3bus/index.html   200
