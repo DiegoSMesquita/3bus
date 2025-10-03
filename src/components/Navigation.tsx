@@ -18,7 +18,7 @@ const Navigation = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-2">
               <div className="bg-primary px-4 py-2 rounded-md">
-                <span className="text-2xl font-bold text-primary-foreground">3bus vendas e locações</span>
+                <span className="text-2xl font-bold text-primary-foreground">3BUS</span>
               </div>
             </a>
           </div>

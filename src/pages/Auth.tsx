@@ -88,7 +88,7 @@ const Auth = () => {
             <Truck className="h-8 w-8 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold">3bus vendas e locações</h1>
+            <h1 className="text-2xl font-bold">3BUS</h1>
             <p className="text-sm text-muted-foreground">Área Administrativa</p>
           </div>
         </div>
