@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="bg-primary px-4 py-2 rounded-md inline-block mb-4">
-              <span className="text-xl font-bold text-primary-foreground">VeículosPro</span>
+              <span className="text-xl font-bold text-primary-foreground">3Bus</span>
             </div>
             <p className="text-muted-foreground text-sm">
               Especialistas em vendas de ônibus, caminhões e veículos pesados com qualidade garantida.
@@ -105,7 +105,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border text-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} VeículosPro. Todos os direitos reservados.
+            © {currentYear} 3Bus. Todos os direitos reservados.
           </p>
         </div>
       </div>

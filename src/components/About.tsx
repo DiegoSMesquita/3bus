@@ -30,7 +30,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Por que escolher a <span className="text-primary">VeículosPro</span>?
+              Por que escolher a <span className="text-primary">3bus</span>?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Somos referência no mercado de veículos comerciais, oferecendo qualidade, confiança e suporte completo
