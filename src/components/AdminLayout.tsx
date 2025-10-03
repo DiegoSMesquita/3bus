@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,9 +10,50 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, isLoading, isAdmin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    if (!isLoading && !user) {
+      navigate('/auth');
+      return;
+    }
+    
+    if (!isLoading && user && !isAdmin) {
+      navigate('/');
+      return;
+    }
+  }, [user, isAdmin, isLoading, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Truck className="h-8 w-8 text-primary mx-auto mb-4 animate-pulse" />
+          <p className="text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Truck className="h-8 w-8 text-muted-foreground mx-auto mb-4" />
+          <p className="text-muted-foreground mb-4">Acesso negado. Você precisa ter permissões de administrador.</p>
+          <Button onClick={() => navigate('/')} variant="outline">
+            Voltar ao site
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const menuItems = [
     {
