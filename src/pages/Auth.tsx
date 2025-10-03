@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LogIn, UserPlus, Truck } from 'lucide-react';
+import { LogIn, UserPlus, Truck, Loader2 } from 'lucide-react';
 import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -142,7 +142,14 @@ const Auth = () => {
                 className="w-full"
                 disabled={isLoading}
               >
-                {isLoading ? 'Entrando...' : 'Entrar'}
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Entrando...
+                  </>
+                ) : (
+                  'Entrar'
+                )}
               </Button>
             </form>
           </TabsContent>
@@ -184,7 +191,14 @@ const Auth = () => {
                 className="w-full"
                 disabled={isLoading}
               >
-                {isLoading ? 'Cadastrando...' : 'Criar Conta'}
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Cadastrando...
+                  </>
+                ) : (
+                  'Criar Conta'
+                )}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center mt-4">
