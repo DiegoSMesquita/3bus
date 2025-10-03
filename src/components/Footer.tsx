@@ -93,7 +93,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5 text-foreground group-hover:text-primary-foreground transition-colors" />
               </a>
               <a 
-                href="mailto:contato@veiculospro.com.br" 
+                href="mailto:contato@3bus.com.br" 
                 className="w-10 h-10 rounded-full bg-muted hover:bg-primary transition-colors flex items-center justify-center group"
                 aria-label="Email"
               >

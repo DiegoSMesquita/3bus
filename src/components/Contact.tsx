@@ -12,8 +12,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      info: "contato@veiculospro.com.br",
-      link: "mailto:contato@veiculospro.com.br"
+      info: "contato@3bus.com.br",
+      link: "mailto:contato@3bus.com.br"
     },
     {
       icon: MapPin,
