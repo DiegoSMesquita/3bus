@@ -10,12 +10,13 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
-  const { user, isAdmin, isLoading, signOut } = useAuth();
+  const { user, isAdmin, isLoading, isCheckingAuth, signOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    if (!isLoading) {
+    // Only redirect when not loading and auth status is determined
+    if (!isLoading && !isCheckingAuth) {
       if (!user) {
         navigate('/auth');
         return;
@@ -26,19 +27,21 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         return;
       }
     }
-  }, [user, isAdmin, isLoading, navigate]);
+  }, [user, isAdmin, isLoading, isCheckingAuth, navigate]);
 
-  if (isLoading) {
+  // Show loading state while authentication is being determined
+  if (isLoading || isCheckingAuth) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Carregando...</p>
+          <p className="text-muted-foreground">Verificando autenticação...</p>
         </div>
       </div>
     );
   }
 
+  // Don't render anything if user is not authenticated or not admin
   if (!user || !isAdmin) {
     return null;
   }
